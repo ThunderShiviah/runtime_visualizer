@@ -1,2 +1,2 @@
-from rtviz.main import *
 
+from rtviz.main import rtviz

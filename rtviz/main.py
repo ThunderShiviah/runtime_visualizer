@@ -6,6 +6,7 @@ from functools import partial
 
 from matplotlib import pyplot as plt
 
+
 def func_timer(func, *params, verbose=False):
     """Takes in a function and some parameters to the function and returns the execution time"""
     start = time()
@@ -15,6 +16,7 @@ def func_timer(func, *params, verbose=False):
         print('function {func_name} took {time} seconds to complete given parameters'.format(
         func_name=func.__name__, time=t))
     return t
+
 
 def list_generator(max_size, num_samples, n=10, upper_num=100):
     """Generates random integer lists with (sampled) lengths from range 1 to max_size.
@@ -70,7 +72,7 @@ def subplot_generator(lst_lengths, func_times_lst):
         plt.plot(lst_lengths, func_times_lst, 'bo')
         return
 
-def rtviz(func, max_size=1000, num_samples=500, *args):
+def rtviz(func, *args, max_size=1000, num_samples=500, viz=True, verbose=True):
     """Takes in a function that receives an iterable as input.
     Returns a plot of the runtimes over iterables of random integers of increasing length.
     
@@ -79,11 +81,17 @@ def rtviz(func, max_size=1000, num_samples=500, *args):
     lst_of_lsts = list(list_generator(max_size, num_samples))
     lsts_len = [len(elem) for elem in lst_of_lsts]
 
+    start = time()
     runtime_gen = runtime_generator(func, lst_of_lsts)
+    t = time() - start
+    
+    if verbose == True:
+        print('%s took %0.3fms.' % (func.__name__, t*1000.))
+
 
     subplot_generator(lsts_len, list(runtime_gen))
-    plt.show()
-    print("The subplot thing ran")
+    if viz == True:
+        plt.show()
     return
 
     
@@ -91,4 +99,4 @@ def rtviz(func, max_size=1000, num_samples=500, *args):
 
 if __name__ == "__main__":
 
-    rtviz(sorted, 10000, 5000)
+    rtviz(sorted)
