@@ -14,8 +14,6 @@ def list_generator_test():
 def runtime_lst_test():
 
     def f(n): return n**2
-    assert len(list(runtime_lst(f, [i for i in range(10)]))) == 10
+    assert len(list(runtime_generator(f, [i for i in range(10)]))) == 10
 
 
-def rtviz_test():
-    assert len(list(rtviz(max))) == 50
