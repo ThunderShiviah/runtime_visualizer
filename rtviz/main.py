@@ -68,15 +68,18 @@ def runtime_lst_not_parallel(func, lists):
     return res
 
 
-def subplot_generator(lst_lengths, func_times_lst):
-        plt.plot(lst_lengths, func_times_lst, 'bo')
-        return
-
 def rtviz(func, *args, max_size=1000, num_samples=500, viz=True, verbose=True):
     """Takes in a function that receives an iterable as input.
     Returns a plot of the runtimes over iterables of random integers of increasing length.
     
     func: a function that acts on an iterable"""
+
+    def subplot_generator(lst_lengths, func_times_lst):
+            plt.plot(lst_lengths, func_times_lst, 'bo')
+            plt.xlabel('length of random lists')
+            plt.ylabel('function runtime (sec)')
+            plt.title('Runtime of function {}'.format(func.__name__))
+            return
 
     lst_of_lsts = list(list_generator(max_size, num_samples))
     lsts_len = [len(elem) for elem in lst_of_lsts]
