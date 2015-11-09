@@ -1,5 +1,4 @@
 # runtime_visualizer
-![](https://travis-ci.org/ThunderShiviah/runtime_visualizer.svg?branch=master)
 
 A simple library for visualizing the run-time complexity of python data structures and algorithms. 
 
