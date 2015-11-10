@@ -1,5 +1,5 @@
 # runtime_visualizer
-![](https://travis-ci.org/ThunderShiviah/runtime_visualizer.svg?branch=master)
+![](https://travis-ci.org/ThunderShiviah/runtime_visualizer.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/ThunderShiviah/runtime_visualizer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ThunderShiviah/runtime_visualizer?branch=master)
 
 A simple library for visualizing the run-time complexity of python data structures and algorithms. 
 
